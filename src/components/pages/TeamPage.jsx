@@ -7,14 +7,14 @@ import { Button } from "@/components/ui/button";
 
 function TeamPage({ onPageChange }) {
   const teamMembers = [
-    { name: "Davi Guedes", role: "Participante", image: "/images/davi.jpg" },
-    { name: "Alisson Felipe", role: "Participante", image: "/images/alisson.jpg" },
-    { name: "Arthur Felipe", role: "Desenvolvedor do slide", image: "/images/arthur.jpg" },
-    { name: "Mateus Henrique", role: "Desenvolvedor Web", image: "/images/mateus.jpg" },
-    { name: "Lucas Henrique", role: "Participante", image: "/images/lucas.jpg" },
-    { name: "Luiz Ricardo", role: "Participante", image: "/images/luiz.jpg" },
-    { name: "Julio Henrique", role: "Participante", image: "/images/julio.jpg" },
-    { name: "Erison Carlos", role: "Participante", image: "/images/erison.jpg" },
+    { name: "Mateus Henrique", role: "Desenvolvedor Web", image: "/images/Mateus.jpg" },
+    { name: "Artur Felipe", role: "Desenvolvedor Slide", image: "/images/alisson.jpg" },
+    { name: "Alisson Felipe", role: "Aoresentador", image: "/images/arthur.jpg" },
+    { name: "Davi Guedes", role: "Pesquisador", image: "/images/davi.jpg" },
+    { name: "Lucas Henrique", role: "Apresentador", image: "/images/lucas.jpg" },
+    { name: "Luiz Ricardo", role: "Apresentador", image: "/images/luiz.jpg" },
+    { name: "Julio Henrique", role: "Apresentador", image: "/images/julio.jpg" },
+    { name: "Erison Carlos", role: "Apresentador", image: "/images/erison.jpg" },
     { name: "Josinete", role: "Professor responsável", image: "/images/josinete.jpg" }
   ];
 
