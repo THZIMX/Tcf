@@ -1,9 +1,10 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { AlertTriangle, Heart, Activity, Brain, Eye, Droplets, TreePine, Building, Globe } from 'lucide-react'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { AlertTriangle, Heart, Activity, Brain, Eye, Droplets, TreePine, Building, Globe } from 'lucide-react';
+import Footer from "@/components/Footer";
 
-const CausesPage = () => {
+function CausesPage() {
   const healthConsequences = [
     {
       icon: <Activity className="h-8 w-8 text-red-500" />,
@@ -33,7 +34,7 @@ const CausesPage = () => {
       severity: "Baixa",
       color: "bg-blue-100 text-blue-800"
     }
-  ]
+  ];
 
   const environmentalConsequences = [
     {
@@ -60,7 +61,7 @@ const CausesPage = () => {
       description: "Névoa poluente formada pela reação de poluentes com a luz solar, comum em grandes cidades.",
       impact: "Qualidade de vida urbana"
     }
-  ]
+  ];
 
   const majorCauses = [
     {
@@ -87,7 +88,7 @@ const CausesPage = () => {
       description: "Aquecimento residencial, queima de lixo e outras atividades.",
       color: "bg-orange-500"
     }
-  ]
+  ];
 
   const vulnerableGroups = [
     {
@@ -106,7 +107,7 @@ const CausesPage = () => {
       group: "Trabalhadores ao ar livre",
       reason: "Maior exposição diária a poluentes atmosféricos."
     }
-  ]
+  ];
 
   return (
     <div className="min-h-screen bg-gray-50 py-12">
@@ -114,20 +115,15 @@ const CausesPage = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <AlertTriangle className="h-16 w-16 mx-auto text-red-600 mb-6" />
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Causas e Consequências
-          </h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Causas e Consequências</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Entenda as principais causas da poluição do ar e seus impactos devastadores 
-            na saúde humana e no meio ambiente.
+            Entenda as principais causas da poluição do ar e seus impactos devastadores na saúde humana e no meio ambiente.
           </p>
         </div>
 
         {/* Main Causes */}
         <div className="mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-            Principais Causas da Poluição do Ar
-          </h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Principais Causas da Poluição do Ar</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {majorCauses.map((cause, index) => (
               <Card key={index} className="text-center hover:shadow-lg transition-shadow">
@@ -147,16 +143,13 @@ const CausesPage = () => {
 
         {/* Consequences Tabs */}
         <div className="mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-            Consequências da Poluição do Ar
-          </h2>
-          
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Consequências da Poluição do Ar</h2>
           <Tabs defaultValue="health" className="w-full">
             <TabsList className="grid w-full grid-cols-2">
               <TabsTrigger value="health">Impactos na Saúde</TabsTrigger>
               <TabsTrigger value="environment">Impactos Ambientais</TabsTrigger>
             </TabsList>
-            
+
             <TabsContent value="health" className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {healthConsequences.map((consequence, index) => (
@@ -166,9 +159,7 @@ const CausesPage = () => {
                         {consequence.icon}
                         <div>
                           <CardTitle className="text-xl">{consequence.title}</CardTitle>
-                          <Badge className={consequence.color}>
-                            Severidade: {consequence.severity}
-                          </Badge>
+                          <Badge className={consequence.color}>Severidade: {consequence.severity}</Badge>
                         </div>
                       </div>
                     </CardHeader>
@@ -178,14 +169,12 @@ const CausesPage = () => {
                   </Card>
                 ))}
               </div>
-              
+
               {/* Vulnerable Groups */}
               <Card className="mt-8">
                 <CardHeader>
                   <CardTitle className="text-2xl">Grupos Mais Vulneráveis</CardTitle>
-                  <CardDescription>
-                    Algumas populações são mais suscetíveis aos efeitos da poluição do ar.
-                  </CardDescription>
+                  <CardDescription>Algumas populações são mais suscetíveis aos efeitos da poluição do ar.</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -199,7 +188,7 @@ const CausesPage = () => {
                 </CardContent>
               </Card>
             </TabsContent>
-            
+
             <TabsContent value="environment" className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {environmentalConsequences.map((consequence, index) => (
@@ -212,9 +201,7 @@ const CausesPage = () => {
                     </CardHeader>
                     <CardContent>
                       <p className="text-gray-700 mb-3">{consequence.description}</p>
-                      <Badge variant="outline" className="text-sm">
-                        Afeta: {consequence.impact}
-                      </Badge>
+                      <Badge variant="outline" className="text-sm">Afeta: {consequence.impact}</Badge>
                     </CardContent>
                   </Card>
                 ))}
@@ -246,8 +233,11 @@ const CausesPage = () => {
           </CardContent>
         </Card>
       </div>
+
+      {/* Footer */}
+      <Footer />
     </div>
-  )
+  );
 }
 
-export default CausesPage
+export default CausesPage;

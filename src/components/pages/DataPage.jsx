@@ -3,13 +3,12 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart, Bar } from 'recharts'
 import { TrendingUp, MapPin } from 'lucide-react'
+import Footer from "@/components/Footer";
 
 const DataPage = () => {
   const [selectedCity, setSelectedCity] = useState('guarulhos')
   const [chartData, setChartData] = useState([])
 
-  // Mock data for demonstration. In a real application, this would come from an API.
-  // Data inspired by AQICN historical data for Guarulhos-Paço Municipal, São Paulo
   const mockData = {
     guarulhos: [
       { month: 'Jan 2024', aqi: 92, pm25: 60, pm10: 40 },
@@ -52,6 +51,35 @@ const DataPage = () => {
       { month: 'Out 2024', aqi: 58, pm25: 36, pm10: 23 },
       { month: 'Nov 2024', aqi: 68, pm25: 42, pm10: 27 },
       { month: 'Dez 2024', aqi: 72, pm25: 45, pm10: 29 },
+    ],
+    // Novas cidades de Pernambuco
+    recife: [
+      { month: 'Jan 2024', aqi: 22, pm25: 4, pm10: 15 },
+      { month: 'Fev 2024', aqi: 25, pm25: 5, pm10: 16 },
+      { month: 'Mar 2024', aqi: 30, pm25: 6, pm10: 18 },
+      { month: 'Abr 2024', aqi: 28, pm25: 5, pm10: 17 },
+      { month: 'Mai 2024', aqi: 27, pm25: 5, pm10: 16 },
+      { month: 'Jun 2024', aqi: 24, pm25: 4, pm10: 15 },
+      { month: 'Jul 2024', aqi: 23, pm25: 4, pm10: 15 },
+      { month: 'Ago 2024', aqi: 25, pm25: 5, pm10: 16 },
+      { month: 'Set 2024', aqi: 26, pm25: 5, pm10: 17 },
+      { month: 'Out 2024', aqi: 27, pm25: 5, pm10: 18 },
+      { month: 'Nov 2024', aqi: 28, pm25: 5, pm10: 19 },
+      { month: 'Dez 2024', aqi: 29, pm25: 6, pm10: 20 },
+    ],
+    camaragibe: [
+      { month: 'Jan 2024', aqi: 45, pm25: 10, pm10: 20 },
+      { month: 'Fev 2024', aqi: 48, pm25: 11, pm10: 21 },
+      { month: 'Mar 2024', aqi: 50, pm25: 12, pm10: 22 },
+      { month: 'Abr 2024', aqi: 47, pm25: 11, pm10: 21 },
+      { month: 'Mai 2024', aqi: 46, pm25: 10, pm10: 20 },
+      { month: 'Jun 2024', aqi: 45, pm25: 10, pm10: 20 },
+      { month: 'Jul 2024', aqi: 44, pm25: 9, pm10: 19 },
+      { month: 'Ago 2024', aqi: 43, pm25: 9, pm10: 18 },
+      { month: 'Set 2024', aqi: 42, pm25: 8, pm10: 17 },
+      { month: 'Out 2024', aqi: 41, pm25: 8, pm10: 16 },
+      { month: 'Nov 2024', aqi: 40, pm25: 7, pm10: 15 },
+      { month: 'Dez 2024', aqi: 39, pm25: 7, pm10: 14 },
     ]
   }
 
@@ -67,15 +95,6 @@ const DataPage = () => {
     { range: '201-300', label: 'Muito Não Saudável', color: '#8B5CF6' },
     { range: '301+', label: 'Perigosa', color: '#7E22CE' },
   ]
-
-  const getAqiColor = (aqi) => {
-    if (aqi <= 50) return '#8DC63F' // Boa
-    if (aqi <= 100) return '#F7B731' // Moderada
-    if (aqi <= 150) return '#EA580C' // Não Saudável para Grupos Sensíveis
-    if (aqi <= 200) return '#EF4444' // Não Saudável
-    if (aqi <= 300) return '#8B5CF6' // Muito Não Saudável
-    return '#7E22CE' // Perigosa
-  }
 
   return (
     <div className="min-h-screen bg-gray-50 py-12">
@@ -104,9 +123,11 @@ const DataPage = () => {
                 <SelectValue placeholder="Selecione uma cidade" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="guarulhos">Guarulhos-Paço Municipal, SP</SelectItem>
+                <SelectItem value="guarulhos">Guarulhos, SP</SelectItem>
                 <SelectItem value="saopaulo">São Paulo, SP</SelectItem>
                 <SelectItem value="riodejaneiro">Rio de Janeiro, RJ</SelectItem>
+                <SelectItem value="recife">Recife, PE</SelectItem>
+                <SelectItem value="camaragibe">Camaragibe, PE</SelectItem>
               </SelectContent>
             </Select>
           </CardContent>
@@ -121,9 +142,7 @@ const DataPage = () => {
             <ResponsiveContainer width="100%" height={400}>
               <LineChart
                 data={chartData}
-                margin={{
-                  top: 5, right: 30, left: 20, bottom: 5,
-                }}
+                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
               >
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="month" />
@@ -145,9 +164,7 @@ const DataPage = () => {
             <ResponsiveContainer width="100%" height={400}>
               <BarChart
                 data={chartData}
-                margin={{
-                  top: 5, right: 30, left: 20, bottom: 5,
-                }}
+                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
               >
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="month" />
@@ -181,8 +198,11 @@ const DataPage = () => {
           </CardContent>
         </Card>
       </div>
+
+      {/* Footer */}
+      <Footer />
     </div>
-  )
+  );
 }
 
-export default DataPage
+export default DataPage;

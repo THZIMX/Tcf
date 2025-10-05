@@ -1,33 +1,34 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Newspaper } from 'lucide-react'
+import Footer from "@/components/Footer";
 
 const NewsPage = () => {
   const newsArticles = [
     {
-      title: 'Qualidade do ar no Brasil: desafios e avanços',
-      date: '25 de Setembro de 2025',
-      summary: 'Análise sobre a situação atual da qualidade do ar nas principais cidades brasileiras e as iniciativas para melhorá-la.',
-      link: '#'
+      title: 'Porto Velho lidera ranking das cidades mais poluídas do Brasil',
+      date: '2 de Maio de 2025',
+      summary: 'Porto Velho, Rondônia, registrou a maior média anual de poluição do ar em 2024, com 29,5 µg/m³, quase seis vezes acima do limite recomendado pela OMS.',
+      link: 'https://www.otempo.com.br/tempo/2025/5/2/ar-mais-poluido-do-brasil-em-2025-lista-inclui-porto-velho-osasco-e-rio-branco'
     },
     {
-      title: 'Novas tecnologias para monitoramento da poluição',
-      date: '10 de Setembro de 2025',
-      summary: 'Exploração de inovações em sensores e sistemas de alerta precoce para poluentes atmosféricos.',
-      link: '#'
+      title: 'São Paulo entre as 10 cidades mais limpas do mundo',
+      date: '26 de Setembro de 2025',
+      summary: 'Apesar da boa qualidade do ar em 26 de setembro, a concentração média de PM2,5 em 2024 foi de 15,9 µg/m³, indicando um nível "moderado" de poluição.',
+      link: 'https://www.iqair.com/br/newsroom/sao-paulo-among-top-10-cleanest-cities-in-the-world-9-26-2025'
     },
     {
-      title: 'O impacto da poluição do ar na saúde infantil',
-      date: '01 de Agosto de 2025',
-      summary: 'Estudo recente revela os efeitos da má qualidade do ar no desenvolvimento respiratório e cognitivo de crianças.',
-      link: '#'
+      title: 'Poluição do ar pode ter causado morte de crianças na Zona Oeste do Rio',
+      date: '3 de Agosto de 2025',
+      summary: 'Estudo concluiu que a poluição do ar pode ter contribuído para a morte de 8,5% das crianças de até 5 anos na Zona Oeste do Rio de Janeiro.',
+      link: 'https://agenciabrasil.ebc.com.br/saude/noticia/2025-08/poluicao-do-ar-pode-ter-causado-morte-de-criancas-na-zona-oeste-do-rio'
     },
     {
-      title: 'Energias renováveis: a chave para um futuro mais limpo',
-      date: '15 de Julho de 2025',
-      summary: 'Como a transição energética pode combater a poluição do ar e mitigar as mudanças climáticas.',
-      link: '#'
+      title: 'Brasil se compromete a reduzir emissões até 67% para 2035',
+      date: '28 de Novembro de 2024',
+      summary: 'Brasil revelou seu plano climático na COP29, comprometendo-se a reduzir suas emissões entre 59% e 67% em relação aos níveis de 2005 até 2035.',
+      link: 'https://elpais.com/america-futura/2024/11/28/brasil-revela-su-plan-climatico-se-compromete-a-reducir-emisiones-hasta-un-67-para-2035.html'
     }
-  ]
+  ];
 
   return (
     <div className="min-h-screen bg-gray-50 py-12">
@@ -76,8 +77,11 @@ const NewsPage = () => {
           </CardContent>
         </Card>
       </div>
+
+      {/* Footer */}
+      <Footer />
     </div>
-  )
+  );
 }
 
-export default NewsPage
+export default NewsPage;

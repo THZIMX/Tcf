@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
 import { Wind, Factory, Car, Flame, Mountain, TreePine } from 'lucide-react'
+import Footer from "@/components/Footer";
 
 const AboutPage = () => {
   const pollutantTypes = [
@@ -221,10 +222,13 @@ const AboutPage = () => {
               </div>
             </div>
           </CardContent>
-        </Card>
+         </Card>
       </div>
+
+      {/* Footer */}
+      <Footer />
     </div>
-  )
+  );
 }
 
 export default AboutPage

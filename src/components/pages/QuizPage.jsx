@@ -16,7 +16,7 @@ const QuizPage = () => {
         { id: 'd', text: 'Hélio (He)' },
       ],
       answer: 'b',
-      explanation: 'O Dióxido de Carbono (CO₂) é o principal gás do efeito estufa e um dos maiores contribuintes para a poluição do ar, principalmente pela queima de combustíveis fósseos.',
+      explanation: 'O Dióxido de Carbono (CO₂) é o principal gás do efeito estufa e um dos maiores contribuintes para a poluição do ar.',
     },
     {
       question: 'Qual fenômeno ambiental é causado pela reação de óxidos de enxofre e nitrogênio com a água na atmosfera?',
@@ -27,7 +27,7 @@ const QuizPage = () => {
         { id: 'd', text: 'Smog Fotoquímico' },
       ],
       answer: 'c',
-      explanation: 'A Chuva Ácida é formada quando óxidos de enxofre e nitrogênio reagem com a umidade da atmosfera, resultando em precipitação com pH baixo que prejudica o meio ambiente.',
+      explanation: 'A Chuva Ácida prejudica o solo, rios e construções, causada pela reação de óxidos de enxofre e nitrogênio com a umidade da atmosfera.',
     },
     {
       question: 'Qual das seguintes opções NÃO é uma fonte antrópica (causada pelo ser humano) de poluição do ar?',
@@ -38,7 +38,7 @@ const QuizPage = () => {
         { id: 'd', text: 'Queimadas agrícolas' },
       ],
       answer: 'c',
-      explanation: 'Erupções vulcânicas são fontes naturais de poluição do ar, enquanto as outras opções são atividades humanas.',
+      explanation: 'Erupções vulcânicas são fontes naturais de poluição do ar, enquanto as outras são atividades humanas.',
     },
     {
       question: 'Qual poluente atmosférico é inodoro e incolor, mas altamente tóxico por se ligar à hemoglobina do sangue?',
@@ -49,7 +49,40 @@ const QuizPage = () => {
         { id: 'd', text: 'Material Particulado (MP)' },
       ],
       answer: 'b',
-      explanation: 'O Monóxido de Carbono (CO) é um gás extremamente perigoso, pois se liga à hemoglobina do sangue com mais facilidade que o oxigênio, impedindo o transporte de O₂ e causando asfixia.',
+      explanation: 'O Monóxido de Carbono (CO) impede o transporte de oxigênio no sangue, podendo causar asfixia.',
+    },
+    {
+      question: 'O que é smog fotoquímico?',
+      options: [
+        { id: 'a', text: 'Neblina causada pela poluição industrial combinada com luz solar' },
+        { id: 'b', text: 'Chuva ácida' },
+        { id: 'c', text: 'Acúmulo de dióxido de carbono nas florestas' },
+        { id: 'd', text: 'Efeito de aquecimento global em áreas urbanas' },
+      ],
+      answer: 'a',
+      explanation: 'O smog fotoquímico ocorre quando poluentes reagem com a luz solar, formando uma névoa irritante e tóxica.',
+    },
+    {
+      question: 'Qual é a principal medida individual para reduzir a poluição do ar?',
+      options: [
+        { id: 'a', text: 'Plantar árvores e evitar queimadas' },
+        { id: 'b', text: 'Usar mais veículos a combustão' },
+        { id: 'c', text: 'Consumir energia elétrica de fontes fósseis' },
+        { id: 'd', text: 'Evitar reciclagem' },
+      ],
+      answer: 'a',
+      explanation: 'Plantar árvores e evitar queimadas ajudam a filtrar o ar e reduzir emissões de poluentes.',
+    },
+    {
+      question: 'Qual poluente é responsável por problemas respiratórios e cardiovasculares mais graves em áreas urbanas?',
+      options: [
+        { id: 'a', text: 'PM2.5' },
+        { id: 'b', text: 'Ozônio' },
+        { id: 'c', text: 'Dióxido de Carbono' },
+        { id: 'd', text: 'Nitrogênio' },
+      ],
+      answer: 'a',
+      explanation: 'Partículas finas (PM2.5) penetram profundamente nos pulmões e na corrente sanguínea, causando doenças graves.',
     },
   ]
 
@@ -61,16 +94,22 @@ const QuizPage = () => {
 
   const handleOptionChange = (value) => {
     setSelectedOption(value)
-    setFeedback(null) // Clear previous feedback when a new option is selected
+    setFeedback(null)
   }
 
   const handleSubmit = () => {
     const currentQuestion = questions[currentQuestionIndex]
+    if (!selectedOption) return
     if (selectedOption === currentQuestion.answer) {
       setScore(score + 1)
       setFeedback({ type: 'correct', message: 'Correto! ' + currentQuestion.explanation })
     } else {
-      setFeedback({ type: 'incorrect', message: 'Incorreto. A resposta correta é ' + currentQuestion.options.find(opt => opt.id === currentQuestion.answer).text + '. ' + currentQuestion.explanation })
+      setFeedback({ 
+        type: 'incorrect', 
+        message: 'Incorreto. A resposta correta é ' + 
+                 currentQuestion.options.find(opt => opt.id === currentQuestion.answer).text + 
+                 '. ' + currentQuestion.explanation 
+      })
     }
   }
 
@@ -97,12 +136,9 @@ const QuizPage = () => {
   return (
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <div className="text-center mb-12">
           <HelpCircle className="h-16 w-16 mx-auto text-green-600 mb-6" />
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Quiz Interativo
-          </h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Quiz Interativo</h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Teste seus conhecimentos sobre poluição do ar e aprenda mais sobre o tema!
           </p>
@@ -127,7 +163,7 @@ const QuizPage = () => {
                   </div>
                 ))}
               </RadioGroup>
-              
+
               {feedback && (
                 <div className={`mt-6 p-4 rounded-lg flex items-start space-x-3 
                   ${feedback.type === 'correct' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>

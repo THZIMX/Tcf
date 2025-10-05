@@ -1,7 +1,9 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Lightbulb, Recycle, Bus, Leaf, ShieldCheck, School } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import Footer from "@/components/Footer"
 
-const SolutionsPage = () => {
+const SolutionsPage = ({ onPageChange }) => {
   const solutions = [
     {
       icon: <Lightbulb className="h-8 w-8 text-yellow-500" />,
@@ -52,7 +54,11 @@ const SolutionsPage = () => {
         {/* Solutions Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {solutions.map((solution, index) => (
-            <Card key={index} className="hover:shadow-lg transition-shadow">
+            <Card 
+              key={index} 
+              className="hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+              onClick={() => onPageChange('data')}
+            >
               <CardHeader>
                 <div className="flex items-center justify-center mb-4">
                   {solution.icon}
@@ -75,12 +81,23 @@ const SolutionsPage = () => {
             <p className="text-lg mb-4">
               Pequenas mudanças em nossos hábitos diários podem contribuir significativamente para a melhoria da qualidade do ar.
             </p>
-            <p className="text-lg font-semibold">
+            <p className="text-lg font-semibold mb-6">
               Comece hoje a fazer a sua parte por um planeta mais limpo.
             </p>
+            <Button 
+              size="lg" 
+              variant="secondary"
+              onClick={() => onPageChange('quiz')}
+              className="text-lg px-8 py-3"
+            >
+              Fazer Quiz
+            </Button>
           </CardContent>
         </Card>
       </div>
+
+      {/* Footer */}
+      <Footer />
     </div>
   )
 }

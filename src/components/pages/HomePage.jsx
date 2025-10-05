@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Wind, AlertTriangle, Heart, Leaf, TrendingUp, Users } from 'lucide-react'
+import { Wind, AlertTriangle, Heart, Leaf, TrendingUp, Users, MapPin } from 'lucide-react'
+import Footer from "@/components/Footer"
 
 const HomePage = ({ onPageChange }) => {
   const highlights = [
@@ -24,7 +25,9 @@ const HomePage = ({ onPageChange }) => {
   const quickStats = [
     { label: "Mortes anuais por poluição do ar", value: "8,1 milhões", color: "text-red-600" },
     { label: "População exposta a ar poluído", value: "99%", color: "text-orange-600" },
-    { label: "Redução necessária de emissões", value: "45%", color: "text-blue-600" }
+    { label: "Redução necessária de emissões", value: "45%", color: "text-blue-600" },
+    { label: "Recife: AQI médio 2024", value: "88", color: "text-purple-600" },
+    { label: "Camaragibe: AQI médio 2024", value: "95", color: "text-pink-600" }
   ]
 
   return (
@@ -66,9 +69,9 @@ const HomePage = ({ onPageChange }) => {
 
       {/* Quick Stats */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-16">
           {quickStats.map((stat, index) => (
-            <Card key={index} className="text-center">
+            <Card key={index} className="text-center hover:shadow-lg transition-shadow">
               <CardContent className="pt-6">
                 <div className={`text-3xl font-bold ${stat.color} mb-2`}>
                   {stat.value}
@@ -160,7 +163,7 @@ const HomePage = ({ onPageChange }) => {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center bg-gradient-to-r from-blue-600 to-green-600 text-white rounded-lg p-12">
+        <div className="text-center bg-gradient-to-r from-blue-600 to-green-600 text-white rounded-lg p-12 mb-12">
           <h2 className="text-3xl font-bold mb-4">
             Teste seus conhecimentos!
           </h2>
@@ -177,6 +180,9 @@ const HomePage = ({ onPageChange }) => {
           </Button>
         </div>
       </div>
+
+      {/* Footer */}
+      <Footer />
     </div>
   )
 }
