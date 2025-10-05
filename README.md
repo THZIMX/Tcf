@@ -146,4 +146,4 @@ Comunidade open-source pelas bibliotecas utilizadas
 
 Colegas e familiares pelo apoio
 
-<div align="center"> <sub>Desenvolvido com ❤️ por <a href="https://github.com/THZIMX">THZIMX</a></sub> </div>
+<div align="center"> <sub>Desenvolvido com ❤️ por <a href="https://thzimx.vercel.app">THZIMX</a></sub> </div>
