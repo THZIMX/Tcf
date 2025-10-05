@@ -23,12 +23,13 @@ const HomePage = ({ onPageChange }) => {
   ]
 
   const quickStats = [
-    { label: "Mortes anuais por poluição do ar", value: "8,1 milhões", color: "text-red-600" },
-    { label: "População exposta a ar poluído", value: "99%", color: "text-orange-600" },
-    { label: "Redução necessária de emissões", value: "45%", color: "text-blue-600" },
-    { label: "Recife: AQI médio 2024", value: "88", color: "text-purple-600" },
-    { label: "Camaragibe: AQI médio 2024", value: "95", color: "text-pink-600" }
-  ]
+  { label: "Mortes anuais por poluição do ar (global)", value: "8,1 milhões", color: "text-red-600" },
+  { label: "População exposta a níveis acima do recomendável", value: "99%", color: "text-orange-600" },
+  { label: "Redução necessária de emissões (meta grosso modo)", value: "≈ 45%", color: "text-blue-600" },
+  { label: "Recife: AQI atual (estimado)", value: "28", color: "text-purple-600" },
+  { label: "Camaragibe: AQI atual (estimado)", value: "67", color: "text-pink-600" }
+]
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50">
