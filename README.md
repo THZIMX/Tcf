@@ -115,10 +115,6 @@ bash
 # Build do projeto
 npm run build
 
-markdown
-![Tela Inicial](public/assets/screenshot-home.png)
-![Seção de Resultados](public/assets/screenshot-results.png)
-![Gráficos Interativos](public/assets/screenshot-charts.png)
 📄 Licença
 Todos os Direitos Reservados - Copyright © 2025 Mateus (THZIMX)
 
