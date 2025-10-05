@@ -7,15 +7,15 @@ import { Button } from "@/components/ui/button";
 
 function TeamPage({ onPageChange }) {
   const teamMembers = [
-    { name: "Davi Guedes", role: "Participante", image: "/images/davi.jpg" },
-    { name: "Alisson Felipe", role: "Participante", image: "/images/alisson.jpg" },
-    { name: "Arthur Felipe", role: "Desenvolvedor do slide", image: "/images/arthur.jpg" },
     {
       name: "Mateus Henrique",
       role: "Desenvolvedor Web",
       image: "/images/mateus.jpg",
       link: "https://thzimx.vercel.app"
     },
+    { name: "Davi Guedes", role: "Participante", image: "/images/davi.jpg" },
+    { name: "Alisson Felipe", role: "Participante", image: "/images/alisson.jpg" },
+    { name: "Arthur Felipe", role: "Desenvolvedor do slide", image: "/images/arthur.jpg" },
     { name: "Lucas Henrique", role: "Participante", image: "/images/lucas.jpg" },
     { name: "Luiz Ricardo", role: "Participante", image: "/images/luiz.jpg" },
     { name: "Julio Henrique", role: "Participante", image: "/images/julio.jpg" },
