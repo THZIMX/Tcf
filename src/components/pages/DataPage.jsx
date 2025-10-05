@@ -179,7 +179,7 @@ const DataPage = () => {
         </Card>
 
         {/* AQI Categories Explanation */}
-        <Card>
+        <Card className="mb-8">
           <CardHeader>
             <CardTitle className="text-2xl">Categorias do Índice de Qualidade do Ar (AQI)</CardTitle>
           </CardHeader>
@@ -195,6 +195,47 @@ const DataPage = () => {
                 </div>
               ))}
             </div>
+          </CardContent>
+        </Card>
+
+        {/* Fontes dos dados */}
+        <Card className="mt-8">
+          <CardHeader>
+            <CardTitle className="text-2xl">Fontes dos Dados</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ul className="list-disc list-inside text-gray-700 space-y-2">
+              <li>
+                <a
+                  href="https://www.iqair.com/brasil/pernambuco/recife"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 underline"
+                >
+                  IQAir – Qualidade do ar Recife
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.accuweather.com/pt/br/camaragibe/34948/air-quality-index/34948"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 underline"
+                >
+                  AccuWeather – Índice de qualidade do ar Camaragibe
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.stateofglobalair.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 underline"
+                >
+                  State of Global Air – Mortes globais por poluição
+                </a>
+              </li>
+            </ul>
           </CardContent>
         </Card>
       </div>
