@@ -29,7 +29,7 @@ function TeamPage({ onPageChange }) {
               Nossa Equipe
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Conheça os dedicados estudantes do 9º D que tornaram este projeto possível.
+              Conheça os participantes que tornaram este projeto possível.
             </p>
           </div>
 
