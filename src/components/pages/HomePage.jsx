@@ -156,7 +156,7 @@ const HomePage = ({ onPageChange }) => {
               </CardHeader>
               <CardContent>
                 <CardDescription>
-                  Conheça os estudantes do 9º D responsáveis por este projeto.
+                  Conheça os participantes responsáveis por este projeto.
                 </CardDescription>
               </CardContent>
             </Card>
