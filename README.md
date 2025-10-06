@@ -142,7 +142,15 @@ Tcf/
 ├── public/
 │   ├── favicon.ico
 │   └── images/
-│       └── julio.jpg          # Imagens públicas
+│       ├── alisson.jpg
+│       ├── arthur.jpg
+│       ├── davi.jpg
+│       ├── erison.jpg
+│       ├── julio.jgp            #Imagens dos participantes
+│       ├── josinete.jpg
+│       ├── lucas.jpg
+│       ├── luis.jpg
+│       └── mateus.jpg
 ├── src/
 │   ├── components/
 │   │   ├── pages/             # Páginas principais
@@ -171,9 +179,9 @@ Tcf/
 │   ├── App.jsx               # Componente raiz
 │   ├── main.jsx              # Entry point
 │   └── index.css             # Estilos globais
-├── package.json
-├── vite.config.js
-└── README.md
+├── package.json         # Pacotes de intalaçao 
+├── vite.config.js       # configuraçoes do vite
+└── README.md            #documentaçao
 ```
 
 ---
