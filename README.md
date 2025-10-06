@@ -2,8 +2,6 @@
 
 <div align="center">
   <img src="public/logo.png" height="120" alt="TCF Logo">
-  
-  <h1>  🎓 TCF — Apresentação Interativa do Trabalho de Conclusão Final</h1>
 
   <p>
     <img alt="License - Proprietary" src="https://img.shields.io/badge/License-All%20Rights%20Reserved-red.svg">
