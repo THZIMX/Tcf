@@ -8,7 +8,6 @@
     <img alt="React" src="https://img.shields.io/badge/React-v19-blue">
     <img alt="Vite" src="https://img.shields.io/badge/Vite-v6-blueviolet">
     <img alt="TailwindCSS" src="https://img.shields.io/badge/TailwindCSS-✓-cyan">
-    <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-Ready-3178C6">
     <img alt="Status" src="https://img.shields.io/badge/Status-Presentation_Ready-success">
   </p>
 
