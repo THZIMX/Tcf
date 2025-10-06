@@ -60,17 +60,21 @@ function TeamPage({ onPageChange }) {
 
                   {/* Botão interativo só se tiver link */}
                   {member.link && (
-                    <a
-                      href={member.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block mt-2"
-                    >
-                      <Button size="sm" variant="secondary">
-                        Ver Portfólio
-                      </Button>
-                    </a>
-                  )}
+  <a
+    href={member.link}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-block mt-3 w-full"
+  >
+    <Button
+      size="lg"
+      variant="default" // usa a cor primária do tema
+      className="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+    >
+      🌐 Ver Portfólio
+    </Button>
+  </a>
+)}
                 </CardContent>
               </Card>
             ))}
