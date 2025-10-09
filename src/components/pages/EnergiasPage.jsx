@@ -76,7 +76,7 @@ export default function Energias() {
 
 // Componente para a animação eólica
 function EolicaAnimacao() {
-  const [rotation, cycleRotation] = useCycle(0, 360);
+      const [rotation, cycleRotation] = useCycle(0, 360);
 
   return (
     <motion.div
@@ -100,19 +100,19 @@ function EolicaAnimacao() {
         onAnimationComplete={() => cycleRotation()}
         aria-label="Pás de turbina eólica girando"
       >
-        <div className="w-32 h-32 border-4 border-blue-400 rounded-full flex items-center justify-center relative">
+        <div className="w-40 h-40 border-4 border-blue-400 rounded-full flex items-center justify-center relative">
           <motion.div
-            className="absolute w-3 h-20 bg-blue-300 rounded-full origin-bottom"
+            className="absolute w-4 h-24 bg-blue-300 rounded-full origin-bottom"
             initial={{ scaleY: 0 }}
             animate={{ scaleY: 1, transition: { delay: 0.4, duration: 0.3 } }}
           ></motion.div>
           <motion.div
-            className="absolute w-3 h-20 bg-blue-300 rounded-full rotate-120 origin-bottom"
+            className="absolute w-4 h-24 bg-blue-300 rounded-full rotate-120 origin-bottom"
             initial={{ scaleY: 0 }}
             animate={{ scaleY: 1, transition: { delay: 0.5, duration: 0.3 } }}
           ></motion.div>
           <motion.div
-            className="absolute w-3 h-20 bg-blue-300 rounded-full -rotate-120 origin-bottom"
+            className="absolute w-4 h-24 bg-blue-300 rounded-full -rotate-120 origin-bottom"
             initial={{ scaleY: 0 }}
             animate={{ scaleY: 1, transition: { delay: 0.6, duration: 0.3 } }}
           ></motion.div>
