@@ -13,7 +13,9 @@ const Navigation = ({ currentPage, onPageChange }) => {
     { id: 'data', label: 'Dados e Gráficos' },
     { id: 'team', label: 'Nossa Equipe' },
     { id: 'news', label: 'Notícias' },
-    { id: 'quiz', label: 'Quiz' }
+    { id: 'quiz', label: 'Quiz' },
+    // 👇 Nova página adicionada:
+    { id: 'energias', label: 'Energias Renováveis ⚡' }
   ]
 
   const handlePageChange = (pageId) => {
