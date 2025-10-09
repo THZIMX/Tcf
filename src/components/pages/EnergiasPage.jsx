@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useCycle } from "framer-motion";
 import { Sun, Wind, Waves, Zap } from "lucide-react";
 import { useState } from "react";
 
@@ -76,6 +76,8 @@ export default function Energias() {
 
 // Componente para a animação eólica
 function EolicaAnimacao() {
+  const [rotation, cycleRotation] = useCycle(0, 360);
+
   return (
     <motion.div
       className="relative w-full h-full flex flex-col items-center justify-center p-4"
@@ -93,23 +95,24 @@ function EolicaAnimacao() {
       {/* Pás girando */}
       <motion.div
         className="absolute top-[35%]"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+        animate={{ rotate: rotation }}
+        transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+        onAnimationComplete={() => cycleRotation()}
         aria-label="Pás de turbina eólica girando"
       >
-        <div className="w-28 h-28 border-4 border-blue-400 rounded-full flex items-center justify-center relative">
+        <div className="w-32 h-32 border-4 border-blue-400 rounded-full flex items-center justify-center relative">
           <motion.div
-            className="absolute w-2 h-16 bg-blue-300 rounded-full origin-bottom"
+            className="absolute w-3 h-20 bg-blue-300 rounded-full origin-bottom"
             initial={{ scaleY: 0 }}
             animate={{ scaleY: 1, transition: { delay: 0.4, duration: 0.3 } }}
           ></motion.div>
           <motion.div
-            className="absolute w-2 h-16 bg-blue-300 rounded-full rotate-120 origin-bottom"
+            className="absolute w-3 h-20 bg-blue-300 rounded-full rotate-120 origin-bottom"
             initial={{ scaleY: 0 }}
             animate={{ scaleY: 1, transition: { delay: 0.5, duration: 0.3 } }}
           ></motion.div>
           <motion.div
-            className="absolute w-2 h-16 bg-blue-300 rounded-full -rotate-120 origin-bottom"
+            className="absolute w-3 h-20 bg-blue-300 rounded-full -rotate-120 origin-bottom"
             initial={{ scaleY: 0 }}
             animate={{ scaleY: 1, transition: { delay: 0.6, duration: 0.3 } }}
           ></motion.div>
@@ -201,6 +204,12 @@ function SolarAnimacao() {
 
 // Componente para a animação hidrelétrica
 function HidroAnimacao() {
+  const [waterFlow, cycleWaterFlow] = useCycle(
+    { y: 0, opacity: 0.8 },
+    { y: -20, opacity: 1 },
+    { y: 0, opacity: 0.8 }
+  );
+
   return (
     <motion.div
       className="relative w-full h-full flex flex-col items-center justify-end p-4"
@@ -217,8 +226,9 @@ function HidroAnimacao() {
       >
         <motion.div
           className="absolute inset-0 bg-gradient-to-b from-blue-300 to-blue-700"
-          animate={{ y: [0, -20, 0], opacity: [0.8, 1, 0.8] }} // Adicionado movimento vertical para simular fluxo
+          animate={waterFlow}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          onAnimationComplete={() => cycleWaterFlow()}
         />
       </motion.div>
 
