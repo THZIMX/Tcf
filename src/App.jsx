@@ -8,6 +8,8 @@ import SolutionsPage from './components/pages/SolutionsPage'
 import TeamPage from './components/pages/TeamPage'
 import NewsPage from './components/pages/NewsPage'
 import QuizPage from './components/pages/QuizPage'
+import EnergiasPage from './components/pages/EnergiasPage'
+
 import './App.css'
 
 function App() {
@@ -31,6 +33,8 @@ function App() {
         return <NewsPage />
       case 'quiz':
         return <QuizPage />
+      case 'energias':
+        return <EnergiasPage />
       default:
         return <HomePage onPageChange={setCurrentPage} />
     }
