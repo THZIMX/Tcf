@@ -2,6 +2,17 @@ import { motion } from "framer-motion";
 import { Sun, Wind, Waves, Zap } from "lucide-react";
 import { useState } from "react";
 
+// Variantes de animação para elementos comuns
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
+const pulse = {
+  initial: { opacity: 0.5 },
+  animate: { opacity: [0.5, 1, 0.5], transition: { duration: 2, repeat: Infinity, ease: "easeInOut" } },
+};
+
 // Componente principal para exibir os tipos de energia
 export default function Energias() {
   const [energiaAtiva, setEnergiaAtiva] = useState("eolica");
@@ -14,29 +25,51 @@ export default function Energias() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white flex flex-col items-center p-6">
-      <h1 className="text-4xl font-bold mb-6 text-center">Como Funciona Cada Tipo de Energia ⚡</h1>
+      <motion.h1
+        className="text-4xl font-bold mb-6 text-center"
+        variants={fadeIn}
+        initial="hidden"
+        animate="visible"
+      >
+        Como Funciona Cada Tipo de Energia ⚡
+      </motion.h1>
 
-      <div className="flex flex-wrap gap-3 mb-8 justify-center">
+      <motion.div
+        className="flex flex-wrap gap-3 mb-8 justify-center"
+        initial="hidden"
+        animate="visible"
+        variants={{
+          visible: { transition: { staggerChildren: 0.1 } },
+        }}
+      >
         {tiposDeEnergia.map((tipo) => (
-          <button
+          <motion.button
             key={tipo.id}
             onClick={() => setEnergiaAtiva(tipo.id)}
             className={`flex items-center gap-2 px-4 py-2 rounded-xl font-semibold transition ${
-              energiaAtiva === tipo.id ? "bg-blue-600" : "bg-gray-700 hover:bg-gray-600"
+              energiaAtiva === tipo.id ? "bg-blue-600 shadow-lg" : "bg-gray-700 hover:bg-gray-600"
             }`}
             aria-pressed={energiaAtiva === tipo.id}
+            variants={fadeIn}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             {tipo.icon}
             {tipo.nome}
-          </button>
+          </motion.button>
         ))}
-      </div>
+      </motion.div>
 
-      <div className="bg-gray-800 p-6 rounded-2xl shadow-xl w-full max-w-3xl flex flex-col items-center justify-center min-h-[400px] relative overflow-hidden">
+      <motion.div
+        className="bg-gray-800 p-6 rounded-2xl shadow-xl w-full max-w-3xl flex flex-col items-center justify-center min-h-[400px] relative overflow-hidden"
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1, transition: { duration: 0.8, ease: "easeOut" } }}
+        key={energiaAtiva} // Key para re-renderizar e animar a transição entre os tipos de energia
+      >
         {energiaAtiva === "eolica" && <EolicaAnimacao />}
         {energiaAtiva === "solar" && <SolarAnimacao />}
         {energiaAtiva === "hidro" && <HidroAnimacao />}
-      </div>
+      </motion.div>
     </div>
   );
 }
@@ -44,9 +77,18 @@ export default function Energias() {
 // Componente para a animação eólica
 function EolicaAnimacao() {
   return (
-    <div className="relative w-full h-full flex flex-col items-center justify-center p-4">
+    <motion.div
+      className="relative w-full h-full flex flex-col items-center justify-center p-4"
+      initial="hidden"
+      animate="visible"
+      variants={fadeIn}
+    >
       {/* Mastro */}
-      <div className="w-3 h-40 bg-gray-500 rounded-full"></div>
+      <motion.div
+        className="w-3 h-40 bg-gray-500 rounded-full"
+        initial={{ height: 0, opacity: 0 }}
+        animate={{ height: 160, opacity: 1, transition: { delay: 0.2, duration: 0.5 } }}
+      ></motion.div>
 
       {/* Pás girando */}
       <motion.div
@@ -55,35 +97,58 @@ function EolicaAnimacao() {
         transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
         aria-label="Pás de turbina eólica girando"
       >
-        <div className="w-28 h-28 border-4 border-blue-400 rounded-full flex items-center justify-center">
-          <div className="absolute w-2 h-16 bg-blue-300 rounded-full origin-bottom"></div>
-          <div className="absolute w-2 h-16 bg-blue-300 rounded-full rotate-120 origin-bottom"></div>
-          <div className="absolute w-2 h-16 bg-blue-300 rounded-full -rotate-120 origin-bottom"></div>
+        <div className="w-28 h-28 border-4 border-blue-400 rounded-full flex items-center justify-center relative">
+          <motion.div
+            className="absolute w-2 h-16 bg-blue-300 rounded-full origin-bottom"
+            initial={{ scaleY: 0 }}
+            animate={{ scaleY: 1, transition: { delay: 0.4, duration: 0.3 } }}
+          ></motion.div>
+          <motion.div
+            className="absolute w-2 h-16 bg-blue-300 rounded-full rotate-120 origin-bottom"
+            initial={{ scaleY: 0 }}
+            animate={{ scaleY: 1, transition: { delay: 0.5, duration: 0.3 } }}
+          ></motion.div>
+          <motion.div
+            className="absolute w-2 h-16 bg-blue-300 rounded-full -rotate-120 origin-bottom"
+            initial={{ scaleY: 0 }}
+            animate={{ scaleY: 1, transition: { delay: 0.6, duration: 0.3 } }}
+          ></motion.div>
         </div>
       </motion.div>
 
       {/* Luz acendendo (energia gerada) */}
       <motion.div
         className="absolute bottom-10 flex flex-col items-center"
-        animate={{ opacity: [0.4, 1, 0.4] }}
-        transition={{ duration: 2, repeat: Infinity }}
+        variants={pulse}
+        initial="initial"
+        animate="animate"
         aria-label="Indicador de energia sendo gerada"
       >
         <Zap className="w-10 h-10 text-yellow-400" />
         <p className="text-sm text-gray-300">Energia sendo gerada</p>
       </motion.div>
 
-      <p className="absolute bottom-2 text-sm opacity-70 text-center max-w-xs mt-4">
+      <motion.p
+        className="absolute bottom-2 text-sm opacity-70 text-center max-w-xs mt-4"
+        variants={fadeIn}
+        initial="hidden"
+        animate="visible"
+      >
         O vento gira as pás da turbina, que movem um gerador e produzem eletricidade.
-      </p>
-    </div>
+      </motion.p>
+    </motion.div>
   );
 }
 
 // Componente para a animação solar
 function SolarAnimacao() {
   return (
-    <div className="relative w-full h-full flex flex-col items-center justify-end p-4">
+    <motion.div
+      className="relative w-full h-full flex flex-col items-center justify-end p-4"
+      initial="hidden"
+      animate="visible"
+      variants={fadeIn}
+    >
       {/* Sol girando */}
       <motion.div
         className="absolute top-10 left-1/2 -translate-x-1/2"
@@ -95,49 +160,65 @@ function SolarAnimacao() {
       </motion.div>
 
       {/* Painel solar */}
-      <div className="relative mt-28 w-48 h-16 bg-blue-500/60 rounded-lg border-2 border-blue-400 transform -skew-x-12" aria-label="Painel solar"></div>
+      <motion.div
+        className="relative mt-28 w-48 h-16 bg-blue-500/60 rounded-lg border-2 border-blue-400 transform -skew-x-12"
+        initial={{ scaleX: 0, opacity: 0 }}
+        animate={{ scaleX: 1, opacity: 1, transition: { delay: 0.3, duration: 0.6, ease: "easeOut" } }}
+        aria-label="Painel solar"
+      ></motion.div>
 
       {/* Raios de energia */}
       <motion.div
         className="absolute top-24 w-2 h-24 bg-yellow-400 rounded-full"
         animate={{ scaleY: [0.5, 1, 0.5], opacity: [0.6, 1, 0.6] }}
-        transition={{ duration: 1.5, repeat: Infinity }}
+        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
         aria-label="Raios de energia solar"
       />
 
       {/* Lâmpada acendendo */}
       <motion.div
         className="absolute bottom-10 flex flex-col items-center"
-        animate={{ opacity: [0.5, 1, 0.5] }}
-        transition={{ duration: 2, repeat: Infinity }}
+        variants={pulse}
+        initial="initial"
+        animate="animate"
         aria-label="Indicador de energia sendo convertida"
       >
         <Zap className="w-10 h-10 text-yellow-400" />
         <p className="text-sm text-gray-300">Painel convertendo luz em energia</p>
       </motion.div>
 
-      <p className="absolute bottom-2 text-sm opacity-70 text-center max-w-xs mt-4">
+      <motion.p
+        className="absolute bottom-2 text-sm opacity-70 text-center max-w-xs mt-4"
+        variants={fadeIn}
+        initial="hidden"
+        animate="visible"
+      >
         A luz solar é convertida em energia elétrica através das células fotovoltaicas.
-      </p>
-    </div>
+      </motion.p>
+    </motion.div>
   );
 }
 
 // Componente para a animação hidrelétrica
 function HidroAnimacao() {
   return (
-    <div className="relative w-full h-full flex flex-col items-center justify-end p-4">
+    <motion.div
+      className="relative w-full h-full flex flex-col items-center justify-end p-4"
+      initial="hidden"
+      animate="visible"
+      variants={fadeIn}
+    >
       {/* Queda d’água */}
       <motion.div
         className="absolute top-0 w-32 h-48 bg-blue-500 rounded-t-lg overflow-hidden"
         animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         aria-label="Queda d'água"
       >
         <motion.div
           className="absolute inset-0 bg-gradient-to-b from-blue-300 to-blue-700"
           animate={{ opacity: [0.8, 1, 0.8] }}
-          transition={{ duration: 1.2, repeat: Infinity }}
+          transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
         />
       </motion.div>
 
@@ -152,18 +233,24 @@ function HidroAnimacao() {
       {/* Luz (energia gerada) */}
       <motion.div
         className="absolute bottom-8 flex flex-col items-center"
-        animate={{ opacity: [0.5, 1, 0.5] }}
-        transition={{ duration: 2, repeat: Infinity }}
+        variants={pulse}
+        initial="initial"
+        animate="animate"
         aria-label="Indicador de energia sendo gerada"
       >
         <Zap className="w-10 h-10 text-yellow-400" />
         <p className="text-sm text-gray-300">Turbina gerando energia</p>
       </motion.div>
 
-      <p className="absolute bottom-2 text-sm opacity-70 text-center max-w-xs mt-4">
+      <motion.p
+        className="absolute bottom-2 text-sm opacity-70 text-center max-w-xs mt-4"
+        variants={fadeIn}
+        initial="hidden"
+        animate="visible"
+      >
         A água movimenta as turbinas, que giram um gerador e produzem eletricidade.
-      </p>
-    </div>
+      </motion.p>
+    </motion.div>
   );
 }
 
