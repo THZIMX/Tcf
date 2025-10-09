@@ -8,6 +8,8 @@ import SolutionsPage from './components/pages/SolutionsPage'
 import TeamPage from './components/pages/TeamPage'
 import NewsPage from './components/pages/NewsPage'
 import QuizPage from './components/pages/QuizPage'
+
+// 👇 importa a nova página
 import EnergiasPage from './components/pages/EnergiasPage'
 
 import './App.css'
@@ -33,6 +35,7 @@ function App() {
         return <NewsPage />
       case 'quiz':
         return <QuizPage />
+      // 👇 nova rota adicionada:
       case 'energias':
         return <EnergiasPage />
       default:
