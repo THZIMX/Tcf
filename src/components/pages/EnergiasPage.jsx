@@ -211,22 +211,22 @@ function HidroAnimacao() {
       {/* Queda d’água */}
       <motion.div
         className="absolute top-0 w-32 h-48 bg-blue-500 rounded-t-lg overflow-hidden"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        initial={{ height: 0, opacity: 0 }}
+        animate={{ height: 192, opacity: 1, transition: { delay: 0.2, duration: 0.8, ease: "easeOut" } }}
         aria-label="Queda d'água"
       >
         <motion.div
           className="absolute inset-0 bg-gradient-to-b from-blue-300 to-blue-700"
-          animate={{ opacity: [0.8, 1, 0.8] }}
-          transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
+          animate={{ y: [0, -20, 0], opacity: [0.8, 1, 0.8] }} // Adicionado movimento vertical para simular fluxo
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
         />
       </motion.div>
 
       {/* Turbina girando */}
       <motion.div
         className="absolute bottom-24 w-20 h-20 border-4 border-cyan-400 rounded-full"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1, rotate: 360, transition: { delay: 0.5, duration: 1.5, repeat: Infinity, ease: "linear" } }}
         aria-label="Turbina girando"
       />
 
