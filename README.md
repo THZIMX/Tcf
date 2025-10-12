@@ -1,8 +1,7 @@
 # 🎓 TCF - Apresentação Interativa do Trabalho de Conclusão Final
 
 <div align="center">
-  <img src="public/logo.png" height="120" alt="TCF Logo">
-
+  <img src="public/favicon.ico" alt="TCF LOGO" width="500">
   <p>
     <img alt="License - Proprietary" src="https://img.shields.io/badge/License-All%20Rights%20Reserved-red.svg">
     <img alt="React" src="https://img.shields.io/badge/React-v19-blue">
